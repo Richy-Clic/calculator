@@ -1,42 +1,55 @@
+import React from 'react';
+import Display from '../components/Display';
+import { useDispatch, useSelector } from 'react-redux';
+import { add, subtract, multiply, typing } from '../store/caculator/reducer'
 
-import React from 'react'
-import ButtonCalcu from '../components/Button'
-import Display from '../components/Display'
 
-const result = () => {
-    alert()
-}
-
-// result()
 
 const CalculatorShape = () => {
+
+  const operator = useSelector(state => state.calculator.operator)
+
+  const result = () => {
+    
+  //   switch (operator) {
+  //     case '+':
+        
+  //       break;
+    
+  //     default:
+  //       break;
+  //   }
+  console.log();
+  }
+
+  const dispatch = useDispatch()
 
   return (
     <div className='shapeCalculator'>
       <Display />
-      <ButtonCalcu tag="M" cols="1"/>
-      <ButtonCalcu tag="C" cols="1"/>
-      <ButtonCalcu tag="CC" cols="1"/>
-      <ButtonCalcu tag="/" cols="1"/>
+      <div className="btn-calculator" onClick={()=>dispatch(typing('CE'))}> CE </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing('C'))}> C </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing('M'))}> M </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing('/'))}> / </div>
 
-      <ButtonCalcu tag="7" cols="1"/>
-      <ButtonCalcu tag="8" cols="1"/>
-      <ButtonCalcu tag="9" cols="1"/>
-      <ButtonCalcu tag="x" cols="1"/>
+      <div className="btn-calculator" onClick={()=>dispatch(typing(7))}> 7 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing(8))}> 8 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing(9))}> 9 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing('x'))}> X </div>
 
-      <ButtonCalcu tag="4" cols="1"/>
-      <ButtonCalcu tag="5" cols="1"/>
-      <ButtonCalcu tag="6" cols="1"/>
-      <ButtonCalcu tag="-" cols="1"/>
-      <ButtonCalcu tag="1" cols="1"/>
-      <ButtonCalcu tag="2" cols="1"/>
-      <ButtonCalcu tag="3" cols="1"/>
-      <ButtonCalcu tag="+" cols="1"/>
-  
-      <ButtonCalcu tag="0" cols="2"/>
-      <ButtonCalcu tag="." cols="1"/>
-      <ButtonCalcu tag="=" cols="1" onClick={result}/>
-        
+      <div className="btn-calculator" onClick={()=>dispatch(typing(4))}> 4 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing(5))}> 5 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing(6))}> 6 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing('-'))}> - </div>
+
+      <div className="btn-calculator" onClick={()=>dispatch(typing(1))}> 1 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing(2))}> 2 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing(3))}> 3 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(add('+'))}> + </div>
+
+      <div className="btn-calculator column-2" onClick={()=>dispatch(typing(0))}> 0 </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing('.'))}> . </div>
+      <div className="btn-calculator" onClick={()=>dispatch(result('='))}> = </div>
     </div>
   )
 }
