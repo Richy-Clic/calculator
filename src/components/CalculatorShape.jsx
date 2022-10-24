@@ -1,35 +1,23 @@
 import React from 'react';
 import Display from '../components/Display';
 import { useDispatch, useSelector } from 'react-redux';
-import { add, subtract, multiply, typing } from '../store/caculator/reducer'
+import { typing, result, clearAll, clearCurrentValue, deleteChar } from '../features/calculator/operations';
+import { FiDelete } from 'react-icons/fi'
 
 
 
 const CalculatorShape = () => {
 
-  const operator = useSelector(state => state.calculator.operator)
-
-  const result = () => {
-    
-  //   switch (operator) {
-  //     case '+':
-        
-  //       break;
-    
-  //     default:
-  //       break;
-  //   }
-  console.log();
-  }
+  const operation = useSelector(state => console.log(state))
 
   const dispatch = useDispatch()
 
   return (
     <div className='shapeCalculator'>
       <Display />
-      <div className="btn-calculator" onClick={()=>dispatch(typing('CE'))}> CE </div>
-      <div className="btn-calculator" onClick={()=>dispatch(typing('C'))}> C </div>
-      <div className="btn-calculator" onClick={()=>dispatch(typing('M'))}> M </div>
+      <div className="btn-calculator" onClick={()=>dispatch(clearCurrentValue('CE'))}> CE </div>
+      <div className="btn-calculator" onClick={()=>dispatch(clearAll('C'))}> C </div>
+      <div className="btn-calculator" onClick={()=>dispatch(deleteChar('M'))}> <FiDelete /> </div>
       <div className="btn-calculator" onClick={()=>dispatch(typing('/'))}> / </div>
 
       <div className="btn-calculator" onClick={()=>dispatch(typing(7))}> 7 </div>
@@ -45,11 +33,11 @@ const CalculatorShape = () => {
       <div className="btn-calculator" onClick={()=>dispatch(typing(1))}> 1 </div>
       <div className="btn-calculator" onClick={()=>dispatch(typing(2))}> 2 </div>
       <div className="btn-calculator" onClick={()=>dispatch(typing(3))}> 3 </div>
-      <div className="btn-calculator" onClick={()=>dispatch(add('+'))}> + </div>
+      <div className="btn-calculator" onClick={()=>dispatch(typing('+'))}> + </div>
 
       <div className="btn-calculator column-2" onClick={()=>dispatch(typing(0))}> 0 </div>
       <div className="btn-calculator" onClick={()=>dispatch(typing('.'))}> . </div>
-      <div className="btn-calculator" onClick={()=>dispatch(result('='))}> = </div>
+      <div className="btn-calculator" onClick={()=>dispatch(result())}> = </div>
     </div>
   )
 }

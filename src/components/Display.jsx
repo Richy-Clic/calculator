@@ -8,7 +8,7 @@ function Display() {
   return (
     <div className='display'>
       
-        <div className="valor-anterior">{calculator.previousValue}</div>
+        <div className="valor-anterior">{calculator.historyValue}</div>
         <div className="valor-actual">{calculator.currentValue}</div>
         
     </div>
